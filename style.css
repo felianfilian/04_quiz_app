@@ -2,10 +2,23 @@ body {
   background-color: #e6f5ff !important;
 }
 
+.quiz-card {
+  width: 30rem;
+}
+
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
 
   min-height: 100vh;
+}
+
+.question-footer {
+  display: flex;
+  justify-content: space-between;
+
+  padding-top: 16px;
+
+  border-top: 2px solid rgba(0, 0, 0, 0.4);
 }
