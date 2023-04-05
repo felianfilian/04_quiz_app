@@ -17,6 +17,8 @@ let questions = [
   },
 ];
 
+let currentQuestion = 0;
+
 let actualQuestion = 1;
 let allQuestions = questions.length;
 
@@ -39,11 +41,13 @@ function init() {
 // output
 
 function showQuestion() {
-  questionTitle.innerHTML = `${questions[0]["question"]}`;
-  answer01.innerHTML = `${questions[0]["answer_1"]}`;
-  answer02.innerHTML = `${questions[0]["answer_2"]}`;
-  answer03.innerHTML = `${questions[0]["answer_3"]}`;
-  answer04.innerHTML = `${questions[0]["answer_4"]}`;
+  let question = questions[currentQuestion];
+
+  questionTitle.innerHTML = question["question"];
+  answer01.innerHTML = question["answer_1"];
+  answer02.innerHTML = question["answer_2"];
+  answer03.innerHTML = question["answer_3"];
+  answer04.innerHTML = question["answer_4"];
 }
 
 // main
