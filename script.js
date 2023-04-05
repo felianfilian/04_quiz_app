@@ -36,17 +36,25 @@ function init() {
 // output
 
 function showQuestion() {
-  let question = questions[currentQuestion];
+  if (currentQuestion >= questions.length) {
+    questionTitle.innerHTML = "YOU WON";
+    answer01.innerHTML = "YEAH";
+    answer02.innerHTML = "YEAH";
+    answer03.innerHTML = "YEAH";
+    answer04.innerHTML = "YEAH";
+  } else {
+    let question = questions[currentQuestion];
 
-  questionTitle.innerHTML = question["question"];
-  answer01.innerHTML = question["answer_1"];
-  answer02.innerHTML = question["answer_2"];
-  answer03.innerHTML = question["answer_3"];
-  answer04.innerHTML = question["answer_4"];
+    questionTitle.innerHTML = question["question"];
+    answer01.innerHTML = question["answer_1"];
+    answer02.innerHTML = question["answer_2"];
+    answer03.innerHTML = question["answer_3"];
+    answer04.innerHTML = question["answer_4"];
 
-  questionCounter.innerHTML = `
+    questionCounter.innerHTML = `
   <b>${currentQuestion + 1}</b> von <b>${allQuestions}</b> Fragen
   `;
+  }
 }
 
 // answer logic
@@ -71,12 +79,9 @@ function answer(answer) {
 function nextQuestion() {
   btnNext.disabled = true;
   currentQuestion++;
-  if (currentQuestion >= questions.length) {
-    alert("FINISHED");
-  } else {
-    showQuestion();
-    resetQuestionColor();
-  }
+
+  showQuestion();
+  resetQuestionColor();
 }
 
 function resetQuestionColor() {
