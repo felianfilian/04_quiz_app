@@ -20,9 +20,26 @@ let questions = [
 let actualQuestion = 1;
 let allQuestions = questions.length;
 
+let questionTitle = document.getElementById("question-title");
+let answer01 = document.getElementById("answer01");
+let answer02 = document.getElementById("answer02");
+let answer03 = document.getElementById("answer03");
+let answer04 = document.getElementById("answer04");
+
 function init() {
   let questionCounter = document.getElementById("question-counter");
+
+  showQuestion();
+
   questionCounter.innerHTML = `
   <b>${actualQuestion}</b> von <b>${allQuestions}</b> Fragen
   `;
+}
+
+function showQuestion() {
+  questionTitle.innerHTML = `${questions[0]["question"]}`;
+  answer01.innerHTML = `${questions[0]["answer_1"]}`;
+  answer02.innerHTML = `${questions[0]["answer_2"]}`;
+  answer03.innerHTML = `${questions[0]["answer_3"]}`;
+  answer04.innerHTML = `${questions[0]["answer_4"]}`;
 }

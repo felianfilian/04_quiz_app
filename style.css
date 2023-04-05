@@ -2,6 +2,11 @@ body {
   background-color: #e6f5ff !important;
 }
 
+h5 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
 .quiz-card {
   width: 30rem;
 }
@@ -21,4 +26,9 @@ body {
   padding-top: 16px;
 
   border-top: 2px solid rgba(0, 0, 0, 0.4);
+}
+
+.card01:hover {
+  background-color: rgb(200, 200, 255);
+  cursor: pointer;
 }
