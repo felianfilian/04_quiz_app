@@ -29,6 +29,6 @@ h5 {
 }
 
 .card01:hover {
-  background-color: rgb(200, 200, 255);
+  background-color: rgb(34, 0, 255, 0.05);
   cursor: pointer;
 }

@@ -36,6 +36,8 @@ function init() {
   `;
 }
 
+// output
+
 function showQuestion() {
   questionTitle.innerHTML = `${questions[0]["question"]}`;
   answer01.innerHTML = `${questions[0]["answer_1"]}`;
@@ -43,3 +45,7 @@ function showQuestion() {
   answer03.innerHTML = `${questions[0]["answer_3"]}`;
   answer04.innerHTML = `${questions[0]["answer_4"]}`;
 }
+
+// main
+
+function answer(answer) {}
