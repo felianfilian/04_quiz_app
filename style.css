@@ -32,3 +32,8 @@ h5 {
   background-color: rgb(34, 0, 255, 0.05);
   cursor: pointer;
 }
+
+.bg-success,
+.bg-danger {
+  color: #fff !important;
+}

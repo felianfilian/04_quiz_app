@@ -23,10 +23,11 @@ let actualQuestion = 1;
 let allQuestions = questions.length;
 
 let questionTitle = document.getElementById("question-title");
-let answer01 = document.getElementById("answer01");
-let answer02 = document.getElementById("answer02");
-let answer03 = document.getElementById("answer03");
-let answer04 = document.getElementById("answer04");
+let answer01 = document.getElementById("answer_1");
+let answer02 = document.getElementById("answer_2");
+let answer03 = document.getElementById("answer_3");
+let answer04 = document.getElementById("answer_4");
+let btnNext = document.querySelector("#btn-next");
 
 function init() {
   let questionCounter = document.getElementById("question-counter");
@@ -52,4 +53,19 @@ function showQuestion() {
 
 // main
 
-function answer(answer) {}
+function answer(answer) {
+  let question = questions[currentQuestion];
+  let selectedQuestion = answer.slice(-1);
+
+  let rightAnswerIndex = question["right_answer"];
+  let rightAnswer = `answer_${rightAnswerIndex}`;
+
+  if (selectedQuestion == rightAnswerIndex) {
+    document.getElementById(answer).parentNode.classList.add("bg-success");
+  } else {
+    document.getElementById(answer).parentNode.classList.add("bg-danger");
+    document.getElementById(rightAnswer).parentNode.classList.add("bg-success");
+  }
+
+  btnNext.removeAttribute("disabled");
+}
