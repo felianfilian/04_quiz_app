@@ -19,7 +19,6 @@ let questions = [
 
 let currentQuestion = 0;
 
-let actualQuestion = 1;
 let allQuestions = questions.length;
 
 let questionTitle = document.getElementById("question-title");
@@ -27,16 +26,11 @@ let answer01 = document.getElementById("answer_1");
 let answer02 = document.getElementById("answer_2");
 let answer03 = document.getElementById("answer_3");
 let answer04 = document.getElementById("answer_4");
+let questionCounter = document.getElementById("question-counter");
 let btnNext = document.querySelector("#btn-next");
 
 function init() {
-  let questionCounter = document.getElementById("question-counter");
-
   showQuestion();
-
-  questionCounter.innerHTML = `
-  <b>${actualQuestion}</b> von <b>${allQuestions}</b> Fragen
-  `;
 }
 
 // output
@@ -49,9 +43,13 @@ function showQuestion() {
   answer02.innerHTML = question["answer_2"];
   answer03.innerHTML = question["answer_3"];
   answer04.innerHTML = question["answer_4"];
+
+  questionCounter.innerHTML = `
+  <b>${currentQuestion + 1}</b> von <b>${allQuestions}</b> Fragen
+  `;
 }
 
-// main
+// answer logic
 
 function answer(answer) {
   let question = questions[currentQuestion];
@@ -67,5 +65,27 @@ function answer(answer) {
     document.getElementById(rightAnswer).parentNode.classList.add("bg-success");
   }
 
-  btnNext.removeAttribute("disabled");
+  btnNext.disabled = false;
+}
+
+function nextQuestion() {
+  btnNext.disabled = true;
+  currentQuestion++;
+  if (currentQuestion >= questions.length) {
+    alert("FINISHED");
+  } else {
+    showQuestion();
+    resetQuestionColor();
+  }
+}
+
+function resetQuestionColor() {
+  answer01.parentNode.classList.remove("bg-success");
+  answer01.parentNode.classList.remove("bg-danger");
+  answer02.parentNode.classList.remove("bg-success");
+  answer02.parentNode.classList.remove("bg-danger");
+  answer03.parentNode.classList.remove("bg-success");
+  answer03.parentNode.classList.remove("bg-danger");
+  answer04.parentNode.classList.remove("bg-success");
+  answer04.parentNode.classList.remove("bg-danger");
 }
