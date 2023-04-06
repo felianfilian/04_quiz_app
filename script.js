@@ -26,9 +26,9 @@ let questions = [
   {
     question: "Wieviel MHz hatte die Intel-CPU des ersten IBM-PCs?",
     answer_1: "4,77 MHz",
-    answer_2: "83,5 MHz",
+    answer_2: "13,5 MHz",
     answer_3: "1,23 MHz",
-    answer_4: "120.9 MHz",
+    answer_4: "8.9 MHz",
     right_answer: 1,
   },
 ];
@@ -54,15 +54,7 @@ function init() {
 
 function showQuestion() {
   if (currentQuestion >= questions.length) {
-    document.getElementById("question-body").innerHTML = `
-    <img src="./img/trophy.png" class="card-img-top" alt="question-mark">
-    <div id="end-screen">
-        <h2>YOU WIN
-        <br><br>
-        Du hast <b>${rightAnswered}</b> von <b>${allQuestions}</b> Fragen beantwortet
-        </h2>
-      </div>
-    `;
+    showEndScreen();
   } else {
     let question = questions[currentQuestion];
 
@@ -72,10 +64,43 @@ function showQuestion() {
     answer03.innerHTML = question["answer_3"];
     answer04.innerHTML = question["answer_4"];
 
+    showProgressBar(currentQuestion, allQuestions);
+
     questionCounter.innerHTML = `
   <b>${currentQuestion + 1}</b> von <b>${allQuestions}</b> Fragen
+  <br>
+  <b>${rightAnswered}</b> Fragen richtig
   `;
   }
+}
+
+function showEndScreen() {
+  document.getElementById("question-body").innerHTML = `
+    <img src="./img/trophy.png" class="card-img-top" alt="question-mark">
+    <div id="end-screen">
+        <h2>GAME FINISHED
+        <br><br>
+        Du hast <b>${rightAnswered}</b> von <b>${allQuestions}</b> Fragen richtig beantwortet
+        </h2>
+      </div>
+    `;
+}
+
+function showProgressBar(actual, all) {
+  let actualPercent = actual * (100 / all);
+
+  document.getElementById("progress").innerHTML = `
+  <div
+    class="progress-bar"
+    role="progressbar"
+    style="width: ${actualPercent}%;"
+    aria-valuenow="25"
+    aria-valuemin="0"
+    aria-valuemax="100"
+  >
+    ${actualPercent}%
+  </div>;
+  `;
 }
 
 // answer logic

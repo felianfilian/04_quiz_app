@@ -41,3 +41,7 @@ h5 {
 .bg-danger {
   color: #fff !important;
 }
+
+.progress {
+  margin: 16px 0;
+}
