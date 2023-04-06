@@ -45,3 +45,7 @@ h5 {
 .progress {
   margin: 16px 0;
 }
+
+#end-screen {
+  padding: 32px;
+}

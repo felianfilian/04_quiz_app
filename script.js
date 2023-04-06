@@ -79,16 +79,26 @@ function showEndScreen() {
     <img src="./img/trophy.png" class="card-img-top" alt="question-mark">
     <div id="end-screen">
         <h2>GAME FINISHED
-        <br><br>
+        <br>
+        <div id="progress" class="progress">
+          <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;">
+            XX %
+          </div>;
+        </div>
+        <br>
         Du hast <b>${rightAnswered}</b> von <b>${allQuestions}</b> Fragen richtig beantwortet
         </h2>
       </div>
     `;
+  showProgressBar(currentQuestion, allQuestions);
 }
 
 function showProgressBar(actual, all) {
   let actualPercent = actual * (100 / all);
   let progressBar = document.getElementById("progress-bar");
+  if (actualPercent > 100) {
+    actualPercent = 100;
+  }
 
   progressBar.innerHTML = `${actualPercent.toFixed()}%`;
   progressBar.style.width = `${actualPercent}%`;
