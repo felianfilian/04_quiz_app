@@ -37,11 +37,15 @@ function init() {
 
 function showQuestion() {
   if (currentQuestion >= questions.length) {
-    questionTitle.innerHTML = "YOU WON";
-    answer01.innerHTML = "YEAH";
-    answer02.innerHTML = "YEAH";
-    answer03.innerHTML = "YEAH";
-    answer04.innerHTML = "YEAH";
+    document.getElementById("question-body").innerHTML = `
+    <img src="./img/trophy.png" class="card-img-top" alt="question-mark">
+    <div id="end-screen">
+        <h2>YOU WIN
+        <br><br>
+        Du hast <b>${currentQuestion}</b> von <b>${allQuestions}</b> Fragen beantwortet
+        </h2>
+      </div>
+    `;
   } else {
     let question = questions[currentQuestion];
 
