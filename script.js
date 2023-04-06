@@ -88,19 +88,10 @@ function showEndScreen() {
 
 function showProgressBar(actual, all) {
   let actualPercent = actual * (100 / all);
+  let progressBar = document.getElementById("progress-bar");
 
-  document.getElementById("progress").innerHTML = `
-  <div
-    class="progress-bar"
-    role="progressbar"
-    style="width: ${actualPercent}%;"
-    aria-valuenow="25"
-    aria-valuemin="0"
-    aria-valuemax="100"
-  >
-    ${actualPercent}%
-  </div>;
-  `;
+  progressBar.innerHTML = `${actualPercent.toFixed()}%`;
+  progressBar.style.width = `${actualPercent}%`;
 }
 
 // answer logic
