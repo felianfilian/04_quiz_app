@@ -15,9 +15,26 @@ let questions = [
     answer_4: "2009",
     right_answer: 2,
   },
+  {
+    question: "Wer hat die Super Mario Melodie komponiert?",
+    answer_1: "Shinji Mikami",
+    answer_2: "Hajao Miyazaki",
+    answer_3: "Shigeru Miyamoto",
+    answer_4: "Koji Kondo",
+    right_answer: 4,
+  },
+  {
+    question: "Wieviel MHz hatte die Intel-CPU des ersten IBM-PCs?",
+    answer_1: "4,77 MHz",
+    answer_2: "83,5 MHz",
+    answer_3: "1,23 MHz",
+    answer_4: "120.9 MHz",
+    right_answer: 1,
+  },
 ];
 
 let currentQuestion = 0;
+let rightAnswered = 0;
 
 let allQuestions = questions.length;
 
@@ -42,7 +59,7 @@ function showQuestion() {
     <div id="end-screen">
         <h2>YOU WIN
         <br><br>
-        Du hast <b>${currentQuestion}</b> von <b>${allQuestions}</b> Fragen beantwortet
+        Du hast <b>${rightAnswered}</b> von <b>${allQuestions}</b> Fragen beantwortet
         </h2>
       </div>
     `;
@@ -71,6 +88,7 @@ function answer(answer) {
   let rightAnswer = `answer_${rightAnswerIndex}`;
 
   if (selectedQuestion == rightAnswerIndex) {
+    rightAnswered++;
     document.getElementById(answer).parentNode.classList.add("bg-success");
   } else {
     document.getElementById(answer).parentNode.classList.add("bg-danger");
