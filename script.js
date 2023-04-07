@@ -7,30 +7,30 @@ let questions = [
     answer_4: "Peter Eich",
     right_answer: 3,
   },
-  // {
-  //   question: "In welchem Jahr ging Youtube online?",
-  //   answer_1: "2003",
-  //   answer_2: "2005",
-  //   answer_3: "2008",
-  //   answer_4: "2009",
-  //   right_answer: 2,
-  // },
-  // {
-  //   question: "Wer hat die Super Mario Melodie komponiert?",
-  //   answer_1: "Shinji Mikami",
-  //   answer_2: "Hajao Miyazaki",
-  //   answer_3: "Shigeru Miyamoto",
-  //   answer_4: "Koji Kondo",
-  //   right_answer: 4,
-  // },
-  // {
-  //   question: "Wieviel MHz hatte die Intel-CPU des ersten IBM-PCs?",
-  //   answer_1: "4,77 MHz",
-  //   answer_2: "13,5 MHz",
-  //   answer_3: "1,23 MHz",
-  //   answer_4: "8.9 MHz",
-  //   right_answer: 1,
-  // },
+  {
+    question: "In welchem Jahr ging Youtube online?",
+    answer_1: "2003",
+    answer_2: "2005",
+    answer_3: "2008",
+    answer_4: "2009",
+    right_answer: 2,
+  },
+  {
+    question: "Wer hat die Super Mario Melodie komponiert?",
+    answer_1: "Shinji Mikami",
+    answer_2: "Hajao Miyazaki",
+    answer_3: "Shigeru Miyamoto",
+    answer_4: "Koji Kondo",
+    right_answer: 4,
+  },
+  {
+    question: "Wieviel MHz hatte die Intel-CPU des ersten IBM-PCs?",
+    answer_1: "4,77 MHz",
+    answer_2: "13,5 MHz",
+    answer_3: "1,23 MHz",
+    answer_4: "8.9 MHz",
+    right_answer: 1,
+  },
 ];
 
 let currentQuestion = 0;
@@ -53,8 +53,17 @@ function init() {
 }
 
 function restartGame() {
-  alert("restart");
   document.getElementById("question-body").innerHTML = questionBody;
+  currentQuestion = 0;
+  rightAnswered = 0;
+  questionTitle = document.getElementById("question-title");
+  answer01 = document.getElementById("answer_1");
+  answer02 = document.getElementById("answer_2");
+  answer03 = document.getElementById("answer_3");
+  answer04 = document.getElementById("answer_4");
+  questionCounter = document.getElementById("question-counter");
+  btnNext = document.querySelector("#btn-next");
+  showQuestion();
 }
 
 // output
@@ -63,6 +72,7 @@ function showQuestion() {
   if (currentQuestion >= questions.length) {
     showEndScreen();
   } else {
+    console.log("next question");
     let question = questions[currentQuestion];
 
     questionTitle.innerHTML = question["question"];
