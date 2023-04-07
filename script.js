@@ -7,30 +7,30 @@ let questions = [
     answer_4: "Peter Eich",
     right_answer: 3,
   },
-  {
-    question: "In welchem Jahr ging Youtube online?",
-    answer_1: "2003",
-    answer_2: "2005",
-    answer_3: "2008",
-    answer_4: "2009",
-    right_answer: 2,
-  },
-  {
-    question: "Wer hat die Super Mario Melodie komponiert?",
-    answer_1: "Shinji Mikami",
-    answer_2: "Hajao Miyazaki",
-    answer_3: "Shigeru Miyamoto",
-    answer_4: "Koji Kondo",
-    right_answer: 4,
-  },
-  {
-    question: "Wieviel MHz hatte die Intel-CPU des ersten IBM-PCs?",
-    answer_1: "4,77 MHz",
-    answer_2: "13,5 MHz",
-    answer_3: "1,23 MHz",
-    answer_4: "8.9 MHz",
-    right_answer: 1,
-  },
+  // {
+  //   question: "In welchem Jahr ging Youtube online?",
+  //   answer_1: "2003",
+  //   answer_2: "2005",
+  //   answer_3: "2008",
+  //   answer_4: "2009",
+  //   right_answer: 2,
+  // },
+  // {
+  //   question: "Wer hat die Super Mario Melodie komponiert?",
+  //   answer_1: "Shinji Mikami",
+  //   answer_2: "Hajao Miyazaki",
+  //   answer_3: "Shigeru Miyamoto",
+  //   answer_4: "Koji Kondo",
+  //   right_answer: 4,
+  // },
+  // {
+  //   question: "Wieviel MHz hatte die Intel-CPU des ersten IBM-PCs?",
+  //   answer_1: "4,77 MHz",
+  //   answer_2: "13,5 MHz",
+  //   answer_3: "1,23 MHz",
+  //   answer_4: "8.9 MHz",
+  //   right_answer: 1,
+  // },
 ];
 
 let currentQuestion = 0;
@@ -46,8 +46,15 @@ let answer04 = document.getElementById("answer_4");
 let questionCounter = document.getElementById("question-counter");
 let btnNext = document.querySelector("#btn-next");
 
+let questionBody = document.getElementById("question-body").innerHTML;
+
 function init() {
   showQuestion();
+}
+
+function restartGame() {
+  alert("restart");
+  document.getElementById("question-body").innerHTML = questionBody;
 }
 
 // output
@@ -88,6 +95,8 @@ function showEndScreen() {
         <br>
         Du hast <b>${rightAnswered}</b> von <b>${allQuestions}</b> Fragen richtig beantwortet
         </h2>
+        <br><br>
+        <button class="btn btn-primary" type="button" onclick="restartGame()">Restart</button>
       </div>
     `;
   showProgressBar(currentQuestion, allQuestions);
