@@ -48,6 +48,10 @@ let btnNext = document.querySelector("#btn-next");
 
 let questionBody = document.getElementById("question-body").innerHTML;
 
+let AUDIO_RIGHT = new Audio("sound/right.wav");
+let AUDIO_WRONG = new Audio("sound/wrong.wav");
+let AUDIO_SUCCESS = new Audio("sound/success.wav");
+
 function init() {
   showQuestion();
 }
@@ -70,6 +74,7 @@ function restartGame() {
 
 function showQuestion() {
   if (currentQuestion >= questions.length) {
+    AUDIO_SUCCESS.play();
     showEndScreen();
   } else {
     console.log("next question");
@@ -135,9 +140,11 @@ function answer(answer) {
   if (selectedQuestion == rightAnswerIndex) {
     rightAnswered++;
     document.getElementById(answer).parentNode.classList.add("bg-success");
+    AUDIO_RIGHT.play();
   } else {
     document.getElementById(answer).parentNode.classList.add("bg-danger");
     document.getElementById(rightAnswer).parentNode.classList.add("bg-success");
+    AUDIO_WRONG.play();
   }
 
   btnNext.disabled = false;
