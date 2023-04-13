@@ -28,7 +28,7 @@ h5 {
 
 .card-img-top {
   object-fit: contain;
-  max-height: 20vh;
+  max-height: 25vh;
 }
 
 .question-footer {
@@ -58,8 +58,8 @@ h5 {
   padding: 32px;
 }
 
-/* @media (max-height: 680px) {
+@media (max-height: 700px) {
   .card-img-top {
-    display: none;
+    max-height: 15vh;
   }
-} */
+}
