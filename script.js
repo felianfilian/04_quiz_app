@@ -125,7 +125,7 @@ function showEndScreen() {
         Du hast <b>${rightAnswered}</b> von <b>${allQuestions}</b> Fragen richtig beantwortet
         </h2>
         <br><br>
-        <button class="btn btn-primary" type="button" onclick="restartGame()">Restart</button>
+        <button class="btn btn-primary w-100" type="button" onclick="restartGame()">Restart</button>
       </div>
     `;
   showProgressBar(currentQuestion, allQuestions);
