@@ -38,7 +38,15 @@ let rightAnswered = 0;
 
 let allQuestions = questions.length;
 
+// page elements
+
 let questionTitle = document.getElementById("question-title");
+let answerList = [
+  document.getElementById("answer_1"),
+  document.getElementById("answer_2"),
+  document.getElementById("answer_3"),
+  document.getElementById("answer_4"),
+];
 let answer01 = document.getElementById("answer_1");
 let answer02 = document.getElementById("answer_2");
 let answer03 = document.getElementById("answer_3");
@@ -47,6 +55,8 @@ let questionCounter = document.getElementById("question-counter");
 let btnNext = document.querySelector("#btn-next");
 
 let questionBody = document.getElementById("question-body").innerHTML;
+
+// audio
 
 let AUDIO_RIGHT = new Audio("sound/right.wav");
 let AUDIO_WRONG = new Audio("sound/wrong.wav");
@@ -67,6 +77,7 @@ function restartGame() {
   answer04 = document.getElementById("answer_4");
   questionCounter = document.getElementById("question-counter");
   btnNext = document.querySelector("#btn-next");
+
   showQuestion();
 }
 
@@ -77,23 +88,26 @@ function showQuestion() {
     AUDIO_SUCCESS.play();
     showEndScreen();
   } else {
-    console.log("next question");
-    let question = questions[currentQuestion];
+    questionOutput();
+  }
+}
 
-    questionTitle.innerHTML = question["question"];
-    answer01.innerHTML = question["answer_1"];
-    answer02.innerHTML = question["answer_2"];
-    answer03.innerHTML = question["answer_3"];
-    answer04.innerHTML = question["answer_4"];
+function questionOutput() {
+  let question = questions[currentQuestion];
 
-    showProgressBar(currentQuestion, allQuestions);
+  questionTitle.innerHTML = question["question"];
+  answer01.innerHTML = question["answer_1"];
+  answer02.innerHTML = question["answer_2"];
+  answer03.innerHTML = question["answer_3"];
+  answer04.innerHTML = question["answer_4"];
 
-    questionCounter.innerHTML = `
+  showProgressBar(currentQuestion, allQuestions);
+
+  questionCounter.innerHTML = `
   <b>${currentQuestion + 1}</b> von <b>${allQuestions}</b> Fragen
   <br>
   <b>${rightAnswered}</b> Fragen richtig
   `;
-  }
 }
 
 function showEndScreen() {
@@ -131,23 +145,34 @@ function showProgressBar(actual, all) {
 // answer logic
 
 function answer(answer) {
-  let question = questions[currentQuestion];
-  let selectedQuestion = answer.slice(-1);
+  if (btnNext.disabled == true) {
+    let question = questions[currentQuestion];
+    let selectedQuestion = answer.slice(-1);
 
-  let rightAnswerIndex = question["right_answer"];
-  let rightAnswer = `answer_${rightAnswerIndex}`;
+    let rightAnswerIndex = question["right_answer"];
+    let rightAnswer = `answer_${rightAnswerIndex}`;
 
-  if (selectedQuestion == rightAnswerIndex) {
-    rightAnswered++;
-    document.getElementById(answer).parentNode.classList.add("bg-success");
-    AUDIO_RIGHT.play();
-  } else {
-    document.getElementById(answer).parentNode.classList.add("bg-danger");
-    document.getElementById(rightAnswer).parentNode.classList.add("bg-success");
-    AUDIO_WRONG.play();
+    if (selectedQuestion == rightAnswerIndex) {
+      rightAnswerOutput(answer);
+    } else {
+      wrongAnswerOutput(answer, rightAnswer);
+    }
   }
-
   btnNext.disabled = false;
+}
+
+function rightAnswerOutput(answer) {
+  rightAnswered++;
+  document.getElementById(answer).parentNode.classList.add("bg-success");
+  AUDIO_RIGHT.currentTime = 0;
+  AUDIO_RIGHT.play();
+}
+
+function wrongAnswerOutput(answer, rightAnswer) {
+  document.getElementById(answer).parentNode.classList.add("bg-danger");
+  document.getElementById(rightAnswer).parentNode.classList.add("bg-success");
+  AUDIO_WRONG.currentTime = 0;
+  AUDIO_WRONG.play();
 }
 
 function nextQuestion() {
@@ -159,6 +184,10 @@ function nextQuestion() {
 }
 
 function resetQuestionColor() {
+  // for (let i = 0; i < 4; i++) {
+  //   answerList[i].parentNode.classList.remove("bg-success");
+  //   answerList[i].parentNode.classList.remove("bg-danger");
+  // }
   answer01.parentNode.classList.remove("bg-success");
   answer01.parentNode.classList.remove("bg-danger");
   answer02.parentNode.classList.remove("bg-success");

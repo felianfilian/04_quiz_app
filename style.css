@@ -18,9 +18,16 @@ h5 {
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 
-  min-height: 100vh;
+  padding: 10px;
+
+  height: 100%;
+}
+
+.card-img-top {
+  object-fit: contain;
+  max-height: 25vh;
 }
 
 .question-footer {
@@ -48,4 +55,10 @@ h5 {
 
 #end-screen {
   padding: 32px;
+}
+
+@media (max-height: 680px) {
+  .card-img-top {
+    display: none;
+  }
 }
