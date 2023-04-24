@@ -12,9 +12,28 @@ h5 {
   margin-block-end: 0;
 }
 
+/* Index Page */
+
+.quiz-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+
+  padding: 30px;
+}
+
+/* Bootstrap Changes */
+
 .quiz-card {
   width: 30rem;
 }
+
+.card-img-top {
+  object-fit: contain;
+  max-height: 25vh;
+}
+
+/* Main Page */
 
 .container {
   display: flex;
@@ -24,11 +43,6 @@ h5 {
   padding: 10px;
 
   height: 100%;
-}
-
-.card-img-top {
-  object-fit: contain;
-  max-height: 25vh;
 }
 
 .question-footer {
